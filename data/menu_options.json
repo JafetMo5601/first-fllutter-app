@@ -1,0 +1,16 @@
+{
+    "appName ": "First Flutter App",
+    "routes": [{
+        "route": "alert_page",
+        "icon": "add_alert",
+        "text": "Alerts"
+    }, {
+        "route": "avatar_page",
+        "icon": "accessibility",
+        "text": "Avatars"
+    }, {
+        "route": "cards_page",
+        "icon": "folder_open",
+        "text": "Cards"
+    }]
+}
