@@ -1,5 +1,3 @@
-import 'package:first_flutter_app/src/pages/list_page.dart';
-import 'package:first_flutter_app/src/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
 
 
