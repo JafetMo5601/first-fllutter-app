@@ -1,0 +1,18 @@
+{
+    "champions": [{
+            "name": "Morgana",
+            "phrase": "I have seen liars choose virtue and I have seen the divine cheat. Perhaps today I will see a Yordle sneeze.",
+            "image": "https://i.pinimg.com/originals/d4/55/2d/d4552dc9616879bde9b0abac655bd4eb.jpg"
+        },
+        {
+            "name": "Veigar",
+            "phrase": "My every victory symbolizes the crumbling of justice!",
+            "image": "https://cdn1.dotesports.com/wp-content/uploads/2021/08/18125341/Grand-Overseer-Veigar-Level-Two-Art-Legends-of-Runeterra.jpg"
+        },
+        {
+            "name": "Kayle",
+            "phrase": "The past is for sinners. The future is for the repentant.",
+            "image": "https://static.zerochan.net/Kayle.full.2814577.jpg"
+        }
+    ]
+}
