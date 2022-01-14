@@ -59,7 +59,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - data/menu_options.json
+    - assets/data/menu_options.json
+    - assets/data/champions.json
+    - assets/images/jar-loading.gif
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
