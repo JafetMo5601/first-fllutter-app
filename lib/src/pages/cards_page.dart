@@ -21,6 +21,7 @@ class CardsPage extends StatelessWidget {
       initialData: [],
       builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
         return ListView(
+          padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 30.0),
           children: _championListOfCardsGenerator(snapshot.data, context)
         );
       }
@@ -28,7 +29,8 @@ class CardsPage extends StatelessWidget {
   }
 
   Widget _championCardWidgetGenerator(String imageURL, Widget championInformation) {
-    final card = Card(
+    // ignore: avoid_unnecessary_containers
+    final container = Container(
       child: Column(
         children: <Widget>[
           championInformation, 
@@ -45,18 +47,20 @@ class CardsPage extends StatelessWidget {
   
     return Container(
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(30.0),
         boxShadow: <BoxShadow> [
           BoxShadow(
             color: Colors.black38,
             blurRadius: 10.0,
-            spreadRadius: 2.0
+            spreadRadius: 2.0,
+            offset: Offset(2.0, 10.0)
           )
         ]
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30.0),
-        child: card,
+        child: container,
       ),
     );
   }
@@ -81,6 +85,7 @@ class CardsPage extends StatelessWidget {
       final tempChampionWidget = (_championCardWidgetGenerator(champion['image'], tempWidget));
 
       champions.add(tempChampionWidget);
+      champions.add(SizedBox(height: 30.0));
     });
 
     return champions;
