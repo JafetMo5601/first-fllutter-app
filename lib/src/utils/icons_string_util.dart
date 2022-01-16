@@ -4,7 +4,14 @@ final _icons = <String, IconData>{
   'add_alert': Icons.add_alert,
   'accessibility': Icons.accessibility,
   'folder_open': Icons.folder_open,
-  'remove': Icons.remove
+  'remove': Icons.remove,
+  'login': Icons.login,
+  'account_circle': Icons.account_circle,
+  'lock': Icons.lock,
+  'register': Icons.person_add,
+  'lock_password': Icons.lock_clock,
+  'person': Icons.person,
+  'email': Icons.email_outlined,
 };
 
 Icon getIcon (String iconName) {
