@@ -13,16 +13,8 @@
         "icon": "folder_open",
         "text": "Champion Cards"
     }, {
-        "route": "login_page",
-        "icon": "login",
-        "text": "Login"
-    }, {
-        "route": "register_page",
-        "icon": "register",
-        "text": "Register"
-    }, {
-        "route": "forgot_password_page",
-        "icon": "lock_password",
-        "text": "Forgot Your Password"
+        "route": "auth_page",
+        "icon": "account_box",
+        "text": "Authentication"
     }]
 }
