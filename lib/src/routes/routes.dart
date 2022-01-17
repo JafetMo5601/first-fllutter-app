@@ -1,3 +1,4 @@
+import 'package:first_flutter_app/src/pages/auth/authentication_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:first_flutter_app/src/pages/altert_page.dart';
@@ -19,6 +20,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'cards_page': (BuildContext context) => CardsPage(),
     'login_page': (BuildContext context) => LoginPage(),
     'register_page': (BuildContext context) => RegisterPage(),
-    'forgot_password_page': (BuildContext context) => ForgotPasswordPage()
+    'forgot_password_page': (BuildContext context) => ForgotPasswordPage(),
+    'auth_page': (BuildContext context) => AuthPage(),
   };
 }
