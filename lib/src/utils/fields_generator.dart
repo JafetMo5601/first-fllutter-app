@@ -63,26 +63,8 @@ Widget generateTextField(TextEditingController textController, String labelText,
   );
 }
 
-Widget generateSubmitButton(GlobalKey<FormState> form, String buttonText) {
-  return ElevatedButton(
-    style: ElevatedButton.styleFrom(
-        primary: Colors.lightBlue, minimumSize: Size.fromHeight(50)),
-    onPressed: () {
-      if (form.currentState!.validate()) {
-        // Send to server
-      }
-    },
-    child: Text(
-      buttonText,
-      style: TextStyle(color: Colors.white, fontSize: 18),
-    ),
-  );
-}
-
-
 Widget formWrapperContainer(Widget widgetToWrap, double containerHeight) {
   return Container(
-
     height: containerHeight,
     margin: EdgeInsets.symmetric(horizontal: 25.0),
     decoration: BoxDecoration(
@@ -93,4 +75,32 @@ Widget formWrapperContainer(Widget widgetToWrap, double containerHeight) {
     ),
     child: widgetToWrap,
   );
+}
+
+Widget dividerWithText(String dividerText){
+  final Divider customizedDivider = Divider(height: 2, thickness: 1);
+  return Container(
+    child: Row(
+      children: [
+        Expanded(child: customizedDivider),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Text(dividerText)
+        ),
+        Expanded(child: customizedDivider),
+      ],
+    ),
+  );
+}
+
+Widget squaredButtonsWithIcons(buttonIcon, {Color buttonColor = Colors.blue}) {
+  return 
+    ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: buttonColor,
+        fixedSize: Size(20, 20)
+      ),
+      onPressed: (){}, 
+      child: buttonIcon
+    );
 }
