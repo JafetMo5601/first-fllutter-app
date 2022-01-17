@@ -32,7 +32,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           SizedBox(height: 30),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: generateSubmitButton(_formForgot, 'Recover password')),
+              child: _generateSubmitButton(_formForgot, 'Recover password')),
           // TextButton(
           //   onPressed: () {},
           //   child: Text(
@@ -42,6 +42,22 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           // ),
         ],
       )
+    );
+  }
+
+  Widget _generateSubmitButton(GlobalKey<FormState> form, String buttonText, {bool isContrasted = false}) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.lightBlue,
+        minimumSize: Size.fromHeight(50)),
+      onPressed: () {
+        if (form.currentState!.validate()) {
+          // Send to server
+        }
+      },
+      child: Text(
+        buttonText,
+      ),
     );
   }
 }
