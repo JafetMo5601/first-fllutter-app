@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-final _icons = <String, IconData>{
+final _icons = <String, dynamic>{
   'add_alert': Icons.add_alert,
   'accessibility': Icons.accessibility,
   'folder_open': Icons.folder_open,
@@ -12,8 +13,9 @@ final _icons = <String, IconData>{
   'lock_password': Icons.lock_clock,
   'person': Icons.person,
   'email': Icons.email_outlined,
+  'account_box': Icons.account_box,
 };
 
-Icon getIcon (String iconName) {
-  return Icon(_icons[iconName], color: Colors.blue);
+Icon getIcon (String iconName, {iconColor = Colors.blue}) {
+  return Icon(_icons[iconName], color: iconColor);
 }
