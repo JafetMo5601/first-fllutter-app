@@ -40,16 +40,25 @@ class _RegisterPageState extends State<RegisterPage> {
           SizedBox(height: 30),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: generateSubmitButton(_formRegister, 'Sign In')),
-          // TextButton(
-          //   onPressed: () {},
-          //   child: Text(
-          //     'Forgot Password?',
-          //     style: TextStyle(color: Colors.blue, fontSize: 15),
-          //   ),
-          // ),
+              child: _generateSubmitButton(_formRegister, 'Sign In')),
         ],
       )
+    );
+  }
+
+  Widget _generateSubmitButton(GlobalKey<FormState> form, String buttonText, {bool isContrasted = false}) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.lightBlue,
+        minimumSize: Size.fromHeight(50)),
+      onPressed: () {
+        if (form.currentState!.validate()) {
+          // Send to server
+        }
+      },
+      child: Text(
+        buttonText,
+      ),
     );
   }
 }

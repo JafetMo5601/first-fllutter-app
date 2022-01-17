@@ -36,9 +36,11 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(height: 30),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: generateSubmitButton(_formLogin, 'Sign In')),
-          TextButton(
-            onPressed: () {},
+              child: _generateSubmitButton(_formLogin, 'Sign In')),
+          TextButton(            
+            onPressed: () {
+              Navigator.pushNamed(context, 'forgot_password_page');
+            },
             child: Text(
               'Forgot Password?',
               style: TextStyle(color: Colors.blue, fontSize: 15),
@@ -46,6 +48,22 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       )
+    );
+  }
+
+  Widget _generateSubmitButton(GlobalKey<FormState> form, String buttonText, {bool isContrasted = false}) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.lightBlue,
+        minimumSize: Size.fromHeight(50)),
+      onPressed: () {
+        if (form.currentState!.validate()) {
+          // Send to server
+        }
+      },
+      child: Text(
+        buttonText,
+      ),
     );
   }
 }
