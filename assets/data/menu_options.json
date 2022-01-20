@@ -12,9 +12,5 @@
         "route": "cards_page",
         "icon": "folder_open",
         "text": "Champion Cards"
-    }, {
-        "route": "auth_page",
-        "icon": "account_box",
-        "text": "Authentication"
     }]
 }
