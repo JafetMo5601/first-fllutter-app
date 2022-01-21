@@ -1,20 +1,68 @@
 import 'package:first_flutter_app/src/utils/fields_generator.dart';
-import 'package:first_flutter_app/src/utils/icons_string_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
+class Auth extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          AuthBackground(),
+        ]
+      ),
+    );
+  }
+}
+
+class AuthBackground extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return _backgroundAuth();
+  }
+
+  final purpleBox = FractionallySizedBox(
+    heightFactor: 0.5,
+    widthFactor: 1,
+    child: Container(
+      width: double.infinity,
+      height: 300,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(40),
+          bottomLeft: Radius.circular(40)
+        ),
+        color: Color(0xff7972e6)
+      ),
+    )
+  );
+
+  final solidBackground = Container(
+    height: double.infinity,
+    width: double.infinity,
+    color: Color(0xfffdfe0ea),
+  );
+
+  Widget _backgroundAuth() {
+    return Stack(
+      children: [
+        solidBackground,
+        purpleBox,
+        AuthPage()
+      ],
+    );
+  }
+}
 
 class AuthPage extends StatelessWidget {
   final _formAuth = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Authentication Page'),
-      ),
-      body: Center(
+    return Center(
         child: formWrapperContainer(_createAuthForm(context), 450.0)
-      ),
     );
   }
 

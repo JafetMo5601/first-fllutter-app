@@ -21,6 +21,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'login_page': (BuildContext context) => LoginPage(),
     'register_page': (BuildContext context) => RegisterPage(),
     'forgot_password_page': (BuildContext context) => ForgotPasswordPage(),
-    'auth_page': (BuildContext context) => AuthPage(),
+    'auth_page': (BuildContext context) => Auth(),
   };
 }
