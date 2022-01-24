@@ -17,7 +17,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         title: Text('Find your account'),
       ),
       body: Center(
-        child: formWrapperContainer(_createRecoverForm(), 180.0),
+        child: FormContainerWrappper(widgetToWrap: _createRecoverForm(), containerHeight: 180.0),
       ),
     );
   }
@@ -28,7 +28,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          generateEmailField(_emailController),
+          EmailField(emailController: _emailController),
           SizedBox(height: 30),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),

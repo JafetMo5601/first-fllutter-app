@@ -4,19 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 class Auth extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          AuthBackground(),
-        ]
-      ),
-    );
-  }
-}
-
-class AuthBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +33,14 @@ class AuthBackground extends StatelessWidget {
   );
 
   Widget _backgroundAuth() {
-    return Stack(
+    return Scaffold(
+      body: Stack(
       children: [
         solidBackground,
         purpleBox,
         AuthPage()
       ],
+      ),
     );
   }
 }
@@ -62,7 +51,7 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: formWrapperContainer(_createAuthForm(context), 450.0)
+        child: FormContainerWrappper(widgetToWrap: _createAuthForm(context), containerHeight: 450.0),
     );
   }
 
@@ -98,15 +87,15 @@ class AuthPage extends StatelessWidget {
           SizedBox(height: 30.0),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: dividerWithText('Or connect using')
+            child: DividerWithText(dividerText: 'Or connect using')
           ),
           SizedBox(height: 30.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              squaredButtonsWithIcons(FaIcon(FontAwesomeIcons.google), buttonColor: Colors.red.shade900),
-              squaredButtonsWithIcons(FaIcon(FontAwesomeIcons.apple), buttonColor: Colors.black54),
-              squaredButtonsWithIcons(FaIcon(FontAwesomeIcons.facebookF), buttonColor: Colors.lightBlue.shade900),
+              SquareButtonWithIcons(buttonIcon: FaIcon(FontAwesomeIcons.google), buttonColor: Colors.red.shade900),
+              SquareButtonWithIcons(buttonIcon: FaIcon(FontAwesomeIcons.apple), buttonColor: Colors.black54),
+              SquareButtonWithIcons(buttonIcon: FaIcon(FontAwesomeIcons.facebookF), buttonColor: Colors.lightBlue.shade900),
             ],
           )
         ],

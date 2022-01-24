@@ -2,7 +2,6 @@ import 'package:first_flutter_app/src/utils/fields_generator.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
-
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -21,44 +20,32 @@ class _RegisterPageState extends State<RegisterPage> {
         title: Text('Sign In'),
       ),
       body: Center(
-        child: formWrapperContainer(_createRegisterForm(), 350.0),
+        child: FormContainerWrappper(widgetToWrap: _createRegisterForm(), containerHeight: 350.0),
       ),
     );
   }
 
   Widget _createRegisterForm() {
-    return Form(
-      key: _formRegister,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          generateEmailField(_emailController),
-          SizedBox(height: 15),
-          generatePasswordField(_passwordController),
-          SizedBox(height: 15),
-          generateTextField(_fullnameController, 'Full-Name', 'register'),
-          SizedBox(height: 30),
-          Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: _generateSubmitButton(_formRegister, 'Sign In')),
-        ],
-      )
-    );
-  }
-
-  Widget _generateSubmitButton(GlobalKey<FormState> form, String buttonText, {bool isContrasted = false}) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.lightBlue,
-        minimumSize: Size.fromHeight(50)),
-      onPressed: () {
-        if (form.currentState!.validate()) {
-          // Send to server
-        }
-      },
-      child: Text(
-        buttonText,
-      ),
-    );
+    var form = Form(
+        key: _formRegister,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            EmailField(emailController: _emailController),
+            SizedBox(height: 15),
+            PasswordField(passwordController: _passwordController),
+            SizedBox(height: 15),
+            GeneralTextField(
+                textController: _fullnameController,
+                desiredIcon: 'Full-Name',
+                labelText: 'register'),
+            SizedBox(height: 30),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                child:
+                    SubmitButton(form: _formRegister, buttonText: 'Sign In')),
+          ],
+        ));
+    return form;
   }
 }

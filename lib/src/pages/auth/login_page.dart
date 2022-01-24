@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
         title: Text('Sign In'),
       ),
       body: Center(
-        child: formWrapperContainer(_createLoginForm(), 300.0),
+        child: FormContainerWrappper(widgetToWrap: _createLoginForm(), containerHeight: 300.0),
       ),
     );
   }
@@ -30,9 +30,9 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          generateEmailField(_emailController),
+          EmailField(emailController: _emailController),
           SizedBox(height: 15),
-          generatePasswordField(_passwordController),
+          PasswordField(passwordController: _passwordController),
           SizedBox(height: 30),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 final _icons = <String, dynamic>{
+  'default_text_input': Icons.text_fields,
+  'default_button': Icons.adjust_sharp,
   'add_alert': Icons.add_alert,
   'accessibility': Icons.accessibility,
   'folder_open': Icons.folder_open,
