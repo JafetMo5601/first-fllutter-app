@@ -1,7 +1,6 @@
 import 'package:first_flutter_app/src/utils/icons_string_util.dart';
 import 'package:flutter/material.dart';
 
-
 class EmailField extends StatelessWidget {
   TextEditingController emailController;
 
@@ -33,9 +32,9 @@ class EmailField extends StatelessWidget {
   }
 }
 
-
 class PasswordField extends StatelessWidget {
   TextEditingController passwordController;
+  bool _passwordVisible = false;
 
   PasswordField({
     required this.passwordController,
@@ -46,26 +45,40 @@ class PasswordField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15),
-      child: TextFormField(
-        controller: passwordController,
-        obscureText: true,
-        decoration: InputDecoration(
-            border: UnderlineInputBorder(),
-            icon: getIcon('lock'),
-            labelText: 'Password',
-            hintText: 'Enter a secure password'),
-        validator: (String? value) {
-          // Add regex
-          if (value == null || value.isEmpty) {
-            return 'Enter a password.';
-          }
-          return null;
-        },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          TextFormField(
+            controller: passwordController,
+            obscureText: true,
+            decoration: InputDecoration(
+                border: UnderlineInputBorder(),
+                icon: getIcon('lock'),
+                labelText: 'Password',
+                hintText: 'Enter a secure password'),
+            validator: (String? value) {
+              // Add regex
+              if (value == null || value.isEmpty) {
+                return 'Enter a password.';
+              }
+              return null;
+            },
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'forgot_password_page');
+            },
+            child: Text(
+              'Forgot Password?',
+              style: TextStyle(
+                  color: Theme.of(context).primaryColor, fontSize: 12),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-
 
 class GeneralTextField extends StatelessWidget {
   TextEditingController textController;
@@ -100,7 +113,6 @@ class GeneralTextField extends StatelessWidget {
   }
 }
 
-
 class DividerWithText extends StatelessWidget {
   final Divider _customizedDivider = Divider(height: 2, thickness: 1);
   String dividerText;
@@ -117,9 +129,8 @@ class DividerWithText extends StatelessWidget {
         children: [
           Expanded(child: _customizedDivider),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text(dividerText)
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(dividerText)),
           Expanded(child: _customizedDivider),
         ],
       ),
@@ -127,9 +138,8 @@ class DividerWithText extends StatelessWidget {
   }
 }
 
-
 class SquareButtonWithIcons extends StatelessWidget {
-  Color buttonColor; 
+  Color buttonColor;
   dynamic buttonIcon = getIcon('default_button');
 
   SquareButtonWithIcons({
@@ -141,39 +151,47 @@ class SquareButtonWithIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: buttonColor,
-        fixedSize: Size(20, 20)
-      ),
-      onPressed: (){}, 
-      child: buttonIcon
-    );
+        style: ElevatedButton.styleFrom(
+            primary: buttonColor, fixedSize: Size(20, 20)),
+        onPressed: () {},
+        child: buttonIcon);
   }
 }
 
-class SubmitButton extends StatelessWidget {
-  GlobalKey<FormState> form; 
-  String buttonText;
-  bool isContrasted;
-  double symmetry;
-  
-  SubmitButton({
+class ElevatedSubmitButton extends StatelessWidget {
+  final GlobalKey<FormState> form;
+  final String buttonText;
+  final bool isContrasted;
+  final double symmetry;
+  final ButtonStyle outlinedStyle = ElevatedButton.styleFrom(
+      primary: Colors.white,
+      onPrimary: Colors.lightBlue,
+      minimumSize: Size.fromHeight(50),
+      side: BorderSide(color: Colors.lightBlue));
+  final ButtonStyle normalStyle = ElevatedButton.styleFrom(
+      primary: Colors.lightBlue, minimumSize: Size.fromHeight(50));
+  final String routeToRedirect;
+
+  ElevatedSubmitButton({
     required this.form,
     required this.buttonText,
     this.symmetry = 15.0,
     this.isContrasted = false,
+    required this.routeToRedirect,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.lightBlue,
-        minimumSize: Size.fromHeight(50)),
+      style: isContrasted ? outlinedStyle : normalStyle,
       onPressed: () {
         if (form.currentState!.validate()) {
           // Send to server
+          print('here');
+          Navigator.pushNamed(context, routeToRedirect);
+        } else {
+          print('Error');
         }
       },
       child: Text(
@@ -184,11 +202,11 @@ class SubmitButton extends StatelessWidget {
 }
 
 class FormContainerWrappper extends StatelessWidget {
-  double containerHeight; 
+  double maxHeight;
   Widget widgetToWrap;
 
   FormContainerWrappper({
-    required this.containerHeight,
+    required this.maxHeight,
     required this.widgetToWrap,
     Key? key,
   }) : super(key: key);
@@ -196,14 +214,15 @@ class FormContainerWrappper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: containerHeight,
+      constraints: BoxConstraints(maxHeight: maxHeight),
+      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
       margin: EdgeInsets.symmetric(horizontal: 25.0),
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: Colors.white,
           borderRadius: BorderRadius.circular(10.0),
           border: Border.all(color: Colors.grey.shade50)),
-      child: widgetToWrap,
+      child: SingleChildScrollView(child: widgetToWrap),
     );
   }
 }

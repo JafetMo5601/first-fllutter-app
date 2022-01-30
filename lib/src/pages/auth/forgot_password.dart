@@ -1,4 +1,5 @@
 import 'package:first_flutter_app/src/utils/fields_generator.dart';
+import 'package:first_flutter_app/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         title: Text('Find your account'),
       ),
       body: Center(
-        child: FormContainerWrappper(widgetToWrap: _createRecoverForm(), containerHeight: 180.0),
+        child: FormContainerWrappper(widgetToWrap: _createRecoverForm(), maxHeight: getContextPercentaje(context, 0.5)),
       ),
     );
   }

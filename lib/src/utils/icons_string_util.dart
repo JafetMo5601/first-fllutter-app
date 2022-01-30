@@ -16,6 +16,8 @@ final _icons = <String, dynamic>{
   'person': Icons.person,
   'email': Icons.email_outlined,
   'account_box': Icons.account_box,
+  'visibility_icon': Icons.visibility,
+  'visibility_icon_off': Icons.visibility_off
 };
 
 Icon getIcon (String iconName, {iconColor = Colors.blue}) {

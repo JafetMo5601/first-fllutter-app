@@ -1,49 +1,8 @@
 import 'package:first_flutter_app/src/utils/fields_generator.dart';
+import 'package:first_flutter_app/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
-class Auth extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return _backgroundAuth();
-  }
-
-  final purpleBox = FractionallySizedBox(
-    heightFactor: 0.5,
-    widthFactor: 1,
-    child: Container(
-      width: double.infinity,
-      height: 300,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(40),
-          bottomLeft: Radius.circular(40)
-        ),
-        color: Color(0xff7972e6)
-      ),
-    )
-  );
-
-  final solidBackground = Container(
-    height: double.infinity,
-    width: double.infinity,
-    color: Color(0xfffdfe0ea),
-  );
-
-  Widget _backgroundAuth() {
-    return Scaffold(
-      body: Stack(
-      children: [
-        solidBackground,
-        purpleBox,
-        AuthPage()
-      ],
-      ),
-    );
-  }
-}
 
 class AuthPage extends StatelessWidget {
   final _formAuth = GlobalKey<FormState>();
@@ -51,11 +10,11 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: FormContainerWrappper(widgetToWrap: _createAuthForm(context), containerHeight: 450.0),
+        child: FormContainerWrappper(widgetToWrap: _createAuthForm(), maxHeight: getContextPercentaje(context, 1.5)),
     );
   }
 
-  Widget _createAuthForm(context) {
+  Widget _createAuthForm() {
     return Form(
       key: _formAuth,
       child: Column(
@@ -66,7 +25,7 @@ class AuthPage extends StatelessWidget {
             child: Text(
               'Welcome to LoL Cards App!',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black87, fontSize: 30, fontWeight: FontWeight.bold)
+              style: TextStyle(color: Colors.black87, fontSize: 20, fontWeight: FontWeight.bold)
             ),
           ),
           Padding(
@@ -79,11 +38,18 @@ class AuthPage extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: _generateSubmitButton(context, _formAuth, 'Sign In')),
+              child: ElevatedSubmitButton(
+                form: _formAuth, 
+                buttonText: 'Sign In', 
+                routeToRedirect: 'login_page')),
           SizedBox(height: 15.0),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: _generateOutlinedSubmitButton(context, _formAuth, 'Sign Up')),
+              child: ElevatedSubmitButton(
+                form: _formAuth, 
+                buttonText: 'Sign Up', 
+                isContrasted: true,              
+                routeToRedirect: 'register_page')),
           SizedBox(height: 30.0),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -102,37 +68,4 @@ class AuthPage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _generateOutlinedSubmitButton(context, GlobalKey<FormState> form, String buttonText) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(      
-        primary: Colors.white, 
-        minimumSize: Size.fromHeight(50), 
-        side: BorderSide(color: Colors.lightBlue)),
-      onPressed: () {
-        Navigator.pushNamed(context, 'register_page');
-      },
-      child: Text(
-        buttonText,
-        style: TextStyle(
-          color: Colors.lightBlue
-        ),
-      ),
-    );
-  }
-
-  Widget _generateSubmitButton(context, GlobalKey<FormState> form, String buttonText, {bool isContrasted = false}) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.lightBlue,
-        minimumSize: Size.fromHeight(50)),
-      onPressed: () {
-        Navigator.pushNamed(context, 'login_page');
-      },
-      child: Text(
-        buttonText,
-      ),
-    );
-  }
-
 }
